@@ -1,0 +1,14 @@
+[
+  {
+    "id": "7f444e12",
+    "phone": "+918790513762",
+    "spoken_phrase": "call me back tomorrow morning",
+    "scheduled_time_iso": "2026-09-14T10:00:00+05:30",
+    "scheduled_time_formatted": "Monday, Sep 14 2026 at 10:00 AM IST",
+    "verbal_confirmation": "Perfect andi, nenu callback ni Monday, 14 September 10:00 AM IST ki schedule chesanu. Ma team nunchi call vastundi.",
+    "topic": "Discuss proposal with brother",
+    "barrier": "Decision maker is brother",
+    "created_at": "2026-09-13T14:10:56.143687+05:30",
+    "status": "SCHEDULED"
+  }
+]
