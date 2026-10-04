@@ -1,5 +1,5 @@
 """
-server.py - FastAPI Webhook Server for ElevateBox Voice Call Assistant.
+server.py - FastAPI Webhook Server for Voice Call Assistant.
 Handles real-time tool calls (mid-call WhatsApp, IST callback scheduling)
 and post-call synthesis & document delivery from telephony engines (Vapi/Retell/Twilio).
 """
@@ -37,7 +37,7 @@ whatsapp_service = WhatsAppService()
 post_call_processor = PostCallProcessor(whatsapp_service=whatsapp_service)
 
 TARGET_PHONE_NUMBER = os.getenv("TARGET_PHONE_NUMBER", "+918790513762")
-CANDIDATE_NAME = os.getenv("CANDIDATE_NAME", "SDE Candidate")
+CONSULTANT_NAME = os.getenv("CONSULTANT_NAME", "Ananya")
 
 
 @asynccontextmanager
@@ -50,7 +50,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="ElevateBox Voice Call Assistant Webhook Server",
+    title="Voice Call Assistant Webhook Server",
     description="Real-time function execution and post-call delivery pipeline for voice calls",
     version="1.0.0",
     lifespan=lifespan,
@@ -74,12 +74,11 @@ async def health_check():
     """System health check and diagnostic endpoint."""
     return {
         "status": "healthy",
-        "service": "ElevateBox Voice Call Assistant",
+        "service": "Voice Call Assistant",
         "whatsapp_provider": whatsapp_service.provider,
         "target_phone": TARGET_PHONE_NUMBER,
         "assets_ready": {
             "diagram": os.path.exists("assets/architecture_diagram.png"),
-            "resume": os.path.exists("assets/resume.pdf"),
         },
     }
 
@@ -184,7 +183,7 @@ def execute_tool_call(name: str, args: Dict[str, Any], caller_phone: str) -> str
         category = args.get("portfolio_category", "e-commerce")
 
         msg_body = (
-            f"👋 Hi! This is Ananya from ElevateBox following up mid-call.\n\n"
+            f"👋 Hi! This is Ananya following up mid-call.\n\n"
             f"Here is our quick portfolio & overview for your {interest} project:\n"
             f"• Tailored architecture & fast go-live\n"
             f"• Razorpay / COD integration & automated courier tracking\n"
@@ -292,7 +291,7 @@ class DirectPostCallRequest(BaseModel):
 
 @app.post("/webhook/post-call")
 async def direct_post_call(payload: DirectPostCallRequest):
-    """Manually trigger full post-call synthesis and 4-part WhatsApp dispatch."""
+    """Manually trigger full post-call synthesis and WhatsApp follow-up dispatch."""
     result = post_call_processor.process_and_dispatch(
         conversation_transcript=payload.transcript,
         recipient_phone=payload.recipient_phone

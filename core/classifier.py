@@ -127,7 +127,7 @@ class LeadClassifier:
             data.sku_count = "100+ items"
 
         # 3. Timeline
-        timeline_match = re.search(r"(within \d+ weeks?|in \d+ days?|next month|diwali|urgently|asap|2 weeks|next week)", combined_text)
+        timeline_match = re.search(r"((?:within|in)\s+\d+\s+weeks?|in \d+ days?|next month|diwali|urgently|asap|2 weeks|next week)", combined_text)
         if timeline_match:
             data.timeline = timeline_match.group(0)
 

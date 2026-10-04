@@ -1,6 +1,6 @@
 """
 scripts/make_outbound_call.py - Outbound Call Trigger Utility.
-Initiates an autonomous outbound telephone call to the target candidate or evaluator
+Initiates an autonomous outbound telephone call to the target phone number
 using the Vapi.ai Telephony API. Supports live dialing and local dry-run simulation.
 """
 
@@ -30,10 +30,10 @@ def initiate_call(
     webhook_url = os.getenv("PUBLIC_WEBHOOK_URL", "http://localhost:8000")
 
     print("\n" + "=" * 65)
-    print("🚀 ElevateBox Voice Assistant - Outbound Call Dispatcher")
+    print("🚀 Voice Call Assistant - Outbound Call Dispatcher")
     print("=" * 65)
     print(f"• Target Recipient : {target_phone}")
-    print(f"• Assistant Persona: Ananya (ElevateBox Hyderabad)")
+    print(f"• Assistant Persona: Ananya (E-Commerce Consultant)")
     print(f"• Server Webhook   : {webhook_url}/webhook/vapi")
 
     # If in dry-run mode or credentials are placeholders
@@ -58,7 +58,7 @@ def initiate_call(
             payload["assistantId"] = assistant_id
         else:
             payload["assistant"] = {
-                "name": "Ananya - ElevateBox Outbound",
+                "name": "Ananya - Outbound Assistant",
                 "model": {
                     "provider": "openai",
                     "model": "gpt-4o",
@@ -68,7 +68,7 @@ def initiate_call(
                     "tools": get_vapi_tools_config()
                 },
                 "firstMessage": (
-                    "Hey there! This is Ananya from ElevateBox in Banjara Hills. "
+                    "Hey there! This is Ananya. "
                     "I saw you were looking into setting up an e-commerce website, "
                     "and wanted to see what you're planning to sell? Have you got a minute?"
                 ),
@@ -105,7 +105,7 @@ def initiate_call(
     else:
         # Transient Assistant Config
         call_payload["assistant"] = {
-            "name": "Ananya - ElevateBox Outbound",
+            "name": "Ananya - Outbound Assistant",
             "serverUrl": f"{webhook_url}/webhook/vapi",
             "model": {
                 "provider": "openai",
@@ -116,7 +116,7 @@ def initiate_call(
                 "tools": get_vapi_tools_config()
             },
             "firstMessage": (
-                "Hey there! This is Ananya from ElevateBox. "
+                "Hey there! This is Ananya. "
                 "I saw you were looking into setting up an e-commerce website, "
                 "and wanted to see what you're planning to sell? Have you got a minute?"
             )

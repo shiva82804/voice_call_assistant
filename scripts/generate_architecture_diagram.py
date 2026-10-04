@@ -1,7 +1,6 @@
 """
 scripts/generate_architecture_diagram.py - Generates a crisp, high-resolution visual
 architecture diagram (PNG) to be automatically sent as a WhatsApp attachment.
-Fulfills ElevateBox Requirement Section 06 (Item 4).
 """
 
 import os
@@ -32,7 +31,7 @@ def generate_architecture_image(output_path: str = "assets/architecture_diagram.
         font_badge = ImageFont.load_default()
 
     # 1. Header Banner
-    draw.text((60, 40), "ElevateBox AI Voice Assistant - Architecture Flow", fill="#38BDF8", font=font_title)
+    draw.text((60, 40), "AI Voice Assistant - Architecture Flow", fill="#38BDF8", font=font_title)
     draw.text((60, 85), "End-to-End Autonomous Outbound Calling, Intent Classification & Mid-Call Execution", fill="#94A3B8", font=font_subtitle)
 
     # Divider line
@@ -116,7 +115,7 @@ def generate_architecture_image(output_path: str = "assets/architecture_diagram.
                 "• Mid-Call Intent Alert (Async)",
                 "• Post-Call Contextual Recap",
                 "• Architecture Diagram (PNG)",
-                "• Candidate Resume (PDF)"
+                "• Project Specs & Summary"
             ],
             "accent": "#10B981"
         }
@@ -164,7 +163,7 @@ def generate_architecture_image(output_path: str = "assets/architecture_diagram.
     draw.text(
         (85, 700),
         "1. Active Call: Dials +91 8790513762 | 2. Mid-Call: Fires WhatsApp upon HOT intent while still talking\n"
-        "3. Post-Call: Evaluates full transcript -> sends human summary + candidate number + resume + architecture\n"
+        "3. Post-Call: Evaluates full transcript -> sends human summary + contact details + architecture\n"
         "Engineered for sub-second latency, barge-in resilience, and trilingual fluency (Telugu, Hindi, English).",
         fill="#E2E8F0",
         font=font_body

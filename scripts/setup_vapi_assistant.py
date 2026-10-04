@@ -25,11 +25,11 @@ def setup_assistant():
     target_phone = os.getenv("TARGET_PHONE_NUMBER", "+918790513762")
 
     print("\n" + "=" * 65)
-    print("⚙️  ElevateBox Voice Assistant - Vapi Assistant Provisioner")
+    print("⚙️  Voice Call Assistant - Vapi Assistant Provisioner")
     print("=" * 65)
 
     assistant_config = {
-        "name": "Ananya - ElevateBox Outbound Consultant",
+        "name": "Ananya - Outbound Consultant",
         "serverUrl": f"{webhook_url}/webhook/vapi",
         "model": {
             "provider": "openai",
@@ -46,7 +46,7 @@ def setup_assistant():
             "fillerInjectionEnabled": True
         },
         "firstMessage": (
-            "Hey there! This is Ananya from ElevateBox. "
+            "Hey there! This is Ananya. "
             "I saw you were looking into setting up an e-commerce website, "
             "and wanted to see what you're planning to sell? Have you got a minute?"
         ),

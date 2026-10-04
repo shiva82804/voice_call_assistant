@@ -11,7 +11,7 @@ def test_post_call_synthesis_and_formatting():
     """Verifies that transcript specifics are correctly extracted and humanly framed."""
     processor = PostCallProcessor()
     transcript = [
-        "Assistant: Hey there! This is Ananya from ElevateBox. What kind of products are you planning to sell?",
+        "Assistant: Hey there! This is Ananya. What kind of products are you planning to sell?",
         "Lead: We make handmade silver jewelry, about 35 designs.",
         "Assistant: Love it! For jewelry, do you need payment gateway like Razorpay?",
         "Lead: Yes, Razorpay and COD. We want to launch in 3 weeks before Diwali. Budget is around 40k."
@@ -35,7 +35,7 @@ def test_post_call_synthesis_and_formatting():
     assert "Jewelry & Accessories" in message_text
     assert "35 items" in message_text
     assert "Razorpay" in message_text
-    assert "+918790513762" in message_text  # Candidate number must be visible
+    assert "+918790513762" in message_text  # Contact phone number must be visible
 
 
 if __name__ == "__main__":

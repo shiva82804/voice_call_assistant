@@ -97,7 +97,7 @@ def test_vapi_end_of_call_report():
                 "customer": {"number": "+918790513762"}
             },
             "transcript": (
-                "Assistant: Hey there! This is Ananya from ElevateBox.\n"
+                "Assistant: Hey there! This is Ananya.\n"
                 "Lead: Hi, we make organic cosmetics, around 20 items.\n"
                 "Assistant: Amazing! When do you plan to go live?\n"
                 "Lead: In 2 weeks. Budget is 30k. Need Razorpay and courier shipping."

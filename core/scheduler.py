@@ -2,7 +2,6 @@
 core/scheduler.py - Natural Language Callback Scheduler.
 Parses colloquial and vague spoken time expressions (English, Telugu, Hindi)
 into exact Indian Standard Time (IST, UTC+05:30) datetime records.
-Fulfills ElevateBox Requirement 7 (10 points).
 """
 
 import os

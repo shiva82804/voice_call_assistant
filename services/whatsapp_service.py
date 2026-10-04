@@ -1,7 +1,7 @@
 """
 services/whatsapp_service.py - Multi-provider WhatsApp messaging layer.
 Supports Twilio WhatsApp, Meta WhatsApp Cloud API, and a robust Mock provider for local testing.
-Handles text messages, image attachments (architecture diagram), and PDF documents (candidate resume).
+Handles text messages, image attachments (architecture diagram), and document attachments.
 """
 
 import os

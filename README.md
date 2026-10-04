@@ -1,6 +1,6 @@
-# ElevateBox AI Voice Calling Assistant
+# AI Voice Calling Assistant
 
-An autonomous, low-latency, trilingual outbound voice calling system engineered for **ElevateBox** (Banjara Hills, Hyderabad). Built for real-world e-commerce sales qualification with organic conversational discovery, mid-call WhatsApp trigger dispatch, colloquial IST callback scheduling, and rich post-call follow-ups.
+An autonomous, low-latency, trilingual outbound voice calling system. Built for real-world e-commerce sales qualification with organic conversational discovery, mid-call WhatsApp trigger dispatch, colloquial IST callback scheduling, and rich post-call follow-ups.
 
 ---
 
@@ -8,7 +8,7 @@ An autonomous, low-latency, trilingual outbound voice calling system engineered 
 
 ```
 +----------------------------------------------------------------------------------------------------+
-|                                    ELEVATEBOX VOICE ASSISTANT PIPELINE                             |
+|                                     AI VOICE ASSISTANT PIPELINE                                    |
 |                                                                                                    |
 |  [ Target Phone ] <====== Telephony ======> [ Vapi Voice Gateway ]                                 |
 |  (+91 8790513762)                            - Deepgram Nova-2 (STT)                               |
@@ -39,7 +39,6 @@ An autonomous, low-latency, trilingual outbound voice calling system engineered 
 |                    - Meta Cloud / Twilio API                                       - Resolves "tomorrow morning"
 |                    - Mid-call Portfolio Alert                                      - Telugu / Hindi expressions  
 |                    - Architecture Diagram (PNG)                                    - JSON persistence            
-|                    - Candidate Resume (PDF)                                                                |
 +----------------------------------------------------------------------------------------------------+
 ```
 
@@ -59,9 +58,8 @@ An autonomous, low-latency, trilingual outbound voice calling system engineered 
 6. **IST Spoken Callback Scheduler**: Converts natural expressions (*"tomorrow morning"*, *"repu morning 11 ki"*, *"kal subah 10 baje"*, *"in 2 hours"*) into exact Indian Standard Time (UTC+05:30) records with natural verbal confirmations.
 7. **Post-Call Delivery**: Processes end-of-call transcripts and sends:
    - Human-framed contextual recap message
-   - Visible candidate mobile number
+   - Contact phone number
    - System Architecture Diagram (`assets/architecture_diagram.png`)
-   - Candidate Resume PDF (`assets/resume.pdf`)
 
 ---
 
@@ -69,8 +67,7 @@ An autonomous, low-latency, trilingual outbound voice calling system engineered 
 
 ```
 ├── assets/
-│   ├── architecture_diagram.png    # Pre-rendered visual system architecture
-│   └── resume.pdf                  # Candidate resume PDF for assignment submission
+│   └── architecture_diagram.png    # Pre-rendered visual system architecture
 ├── core/
 │   ├── classifier.py               # Multilingual intent classifier & 5-dimension parser
 │   ├── prompt.py                   # Master system prompt for consultant persona "Ananya"
@@ -80,21 +77,19 @@ An autonomous, low-latency, trilingual outbound voice calling system engineered 
 ├── data/
 │   └── test_callbacks.json         # Persisted callback bookings
 ├── docs/
-│   └── notes_for_submission.md     # 200-word engineering submission note
+│   └── notes_for_submission.md     # Architecture and engineering notes
 ├── scripts/
 │   ├── generate_architecture_diagram.py  # Pillow generator for high-res architecture PNG
-│   ├── generate_placeholder_resume.py    # ReportLab generator for resume PDF
 │   ├── make_outbound_call.py             # Script to trigger outbound call via Vapi API
 │   └── setup_vapi_assistant.py           # Syncs prompt, tools, and voice settings to Vapi
 ├── services/
-│   ├── post_call_processor.py      # Post-call transcript analysis & 4-part WhatsApp dispatch
+│   ├── post_call_processor.py      # Post-call transcript analysis & WhatsApp dispatch
 │   └── whatsapp_service.py         # Multi-provider (Twilio, Meta, Mock) WhatsApp engine
 ├── tests/
 │   ├── test_part1_intelligence.py  # Intent classification, prompt, & discovery unit tests
 │   ├── test_part4_scheduler.py     # Colloquial IST scheduling unit tests
 │   ├── test_part6_post_call.py     # Post-call synthesis unit tests
 │   └── test_server_webhooks.py     # FastAPI webhook & tool calling integration tests
-├── .env.example                    # Environment variable template
 ├── requirements.txt                # Python project dependencies
 ├── server.py                       # FastAPI real-time webhook server
 └── README.md                       # Complete documentation
@@ -113,11 +108,7 @@ pip install -r requirements.txt
 
 ### 2. Configuration
 
-Copy `.env.example` to `.env`:
-```bash
-cp .env.example .env
-```
-Fill in the values in `.env`:
+Create or configure your environment variables in `.env` (refer to conceptual parameters below):
 - `TARGET_PHONE_NUMBER`: Recipient phone number (e.g. `+918790513762`).
 - `WHATSAPP_PROVIDER`: Choose `mock` (for local simulation), `twilio`, or `meta`.
 - `VAPI_API_KEY`: Your Vapi API Key.
@@ -179,9 +170,6 @@ python scripts/make_outbound_call.py --phone +918790513762
 - `POST /webhook/trigger-midcall-whatsapp`: Directly dispatches mid-call WhatsApp message.
 - `POST /webhook/schedule-callback`: Parses spoken time phrase and persists booking.
 - `GET /callbacks`: Returns all scheduled callback records.
-- `POST /webhook/post-call`: Processes transcript and dispatches recap, candidate number, architecture diagram, and resume.
+- `POST /webhook/post-call`: Processes transcript and dispatches follow-up recap message and architecture diagram.
 
 ---
-
-## 📄 License & Attribution
-Developed for the ElevateBox SDE Intern assignment.
