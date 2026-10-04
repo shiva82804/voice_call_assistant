@@ -1,0 +1,43 @@
+# ==============================================================================
+# Git Ignore - Voice Call Assistant
+# ==============================================================================
+
+# Environment files & Secrets
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+!.env.example
+*.pem
+*.key
+*.cert
+secrets/
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs & temporary files
+*.log
+logs/
+tmp/
+
+# IDE & Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo

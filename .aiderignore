@@ -1,0 +1,7 @@
+# Aider AI ignore file
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
